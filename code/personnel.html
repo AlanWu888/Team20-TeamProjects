@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Page</title>
+    <style>
+        table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+        td {
+          height: 30px;
+}
+        tr:hover{
+          background-color:rgb(187, 186, 186);
+          color:white
+        }
+        button:hover, .sub:hover {
+          background-color:rgb(90, 84, 84);
+          color:white;
+        }
+
+        .cent {
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Employee List</h1></center>
+    <div style="text-align:center;">
+    <button style="height: 30px; float: left; margin-left: 50px; border-radius: 5px;">Add Personnel</button>
+    <select name="criteria" id="criteria" style="height: 35px; text-align-last:center; font-size: small; border-radius: 5px; border-width: 2px; width: 5%;background-color:white; color:black">
+        <option disabled selected>Criteria</option>
+        <option  value="ID" id="ID_Number" style="padding-left: 10px;">ID</option>
+        <option  value="UserName" id="UserName">U.Name</option>
+        <option  value="Name" id="Name">Name</option>
+        <option  value="JobTitle" id="JobTitle">Job</option>
+        <option  value="Department" id="Department">Dept</option>
+        <option  value="PhoneNumber" id="PhoneNumber">P.No</option>
+    </select>
+    <input type="text" name="searchingFor" aria-label="Text input" placeholder="Search..." style="width: 25%; height: 30px; border-radius: 5px">
+    <input type="submit" name="submit" id="submit" value="Submit" class="sub" style="height: 30px; border-width: 2px; border-radius: 5px"/>
+
+    <button style="height: 30px; float: right;margin-right:50px; border-radius: 5px;">Delete Personnel</button>
+    </div>
+    <center style="padding-top: 5px; font-size:small; color: rgba(44, 43, 43, 0.671);">Search for Employee by ID Number, Name, Department....</center><br>
+    <div style="text-align: center ;">
+        <center>
+        <table style="width: 75%; border-radius: 5px;">
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Job Title</th>
+              <th>Department</th>
+              <th>Phone Number</th>
+            </tr>
+            <tr>
+              <td class="cent">1</td>
+              <td>alf123</td>
+              <td>Alfred Anders</td>
+              <td>Network Specialist</td>
+              <td>Networking</td>
+              <td>1122334455</td>
+            </tr>
+            <tr>
+              <td class="cent">2</td>
+              <td>tim</td>
+              <td>Timmothy Thompson</td>
+              <td>Printer Specialist</td>
+              <td>Hardware</td>
+              <td>1122993233</td>
+            </tr>
+            <tr>
+                <td  class="cent">3</td>
+                <td>ronnie_don</td>
+                <td>Ronnie Donald</td>
+                <td>Hardware Specialist</td>
+                <td>Hardware</td>
+                <td>37483334433</td>
+              </tr>
+              <tr>
+                <td  class="cent">4</td>
+                <td>john_son</td>
+                <td>Johnny Johnson</td>
+                <td>Software Specialist</td>
+                <td>Software</td>
+                <td>1122334433</td>
+              </tr>
+              <tr>
+                <td  class="cent">5</td>
+                <td>ral_45</td>
+                <td>Ralston Jackson</td>
+                <td>Peripherals Specialist</td>
+                <td>Hardware</td>
+                <td>1935934433</td>
+              </tr>
+              <tr>
+                <td  class="cent">6</td>
+                <td>john_son</td>
+                <td>Johnny Johnson</td>
+                <td>Software Specialist</td>
+                <td>Software</td>
+                <td>1122334433</td>
+              </tr>
+          </table>
+        </center>
+    </div>
+
+    
+</body>
+</html>
