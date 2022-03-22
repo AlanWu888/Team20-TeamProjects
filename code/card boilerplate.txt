@@ -1,0 +1,50 @@
+					<div class="card testimonial-card">
+						<!-- card header -->
+						<div class="card-header">
+							<div class="row">
+								<div class="col-8">
+									Case ID
+								</div>
+								<div class="col-4 text-right">
+									<!--	
+											Open:	ticket has been submitted 	??? do we need this, seems obsolete
+										  Closed:	issue has been resolved		[dark grey]						<span class="badge badge-dark">Closed</span>
+										 Pending:	user is trying the solutions offered to them	[green]		<span class="badge badge-success">Pending</span>
+										Assigned:	user has been assigned to a specialist			[yellow]	<span class="badge badge-warning">Assigned</span>
+									-->
+									<span class="badge badge-dark">Closed</span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									Date submitted
+								</div>		
+							</div>
+						</div>
+						<!-- card body -->
+						<div class="card-body">
+							<div class="text-truncate">
+								<h5 class="card-title">{Problem title}</h5>
+							</div>
+							<ul>
+								<li>Hardware make</li>
+								<li>Hardware model</li>
+								<li>Software type</li>
+							</ul>
+							<hr>
+							<!-- solution fix here -->
+							<b>Solution offered</b>
+							<div class="col text-truncate">
+								Praeterea iter est quasdam res quas ex communi.Praeterea iter est quasdam res quas ex communi.Praeterea iter est quasdam res quas ex communi.
+							</div>
+						</div>
+						<!-- card footer -->
+						<div class="card-footer text-muted">
+							<button class="btn">
+								Actions
+							</button>
+							<button class="btn">
+								Expand
+							</button>
+						</div>
+					</div>	

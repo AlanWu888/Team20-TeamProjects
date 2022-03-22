@@ -1,0 +1,301 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Manage Users</title>
+</head>
+
+<body>
+	<nav>
+        <!-- Logo -->
+        <a>
+            <img src="../assets/nav_logo.png" width="40" height="40">
+            <b>Make-It-All</b>
+        </a>
+        <div>
+            <!-- navbar search -->
+            <form>
+                <select id="myFilter">
+                    <option value="0">Case ID</option>
+                    <option value="1">Caller Name</option>
+                    <option value="2">Case Status</option>
+                    <option value="3">Date</option>
+                </select>
+                <input type="search" placeholder="Search" aria-label="Search" id="myInput">
+            </form>
+            <ul>
+                <li>
+                    <a href="index.html">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+	<!-- Filter Container-->
+	<div class="container-flex">
+		<div class="row">
+			<!-- Data Container -->
+			<div class="col">
+				<!-- Nav Bar 2: -->
+				<nav class="table-nav">
+					<ul class="tableOptions">
+						<li><b>Manage Users</b></li>
+						<li class="push">
+							<button class="btn" data-toggle="modal" data-target="#addnewuser" id="btn_addNewUser"><b>+</b> Add new Users</button>
+						</li>
+					</ul>
+				</nav>
+
+				<!-- Table of Users -->
+				<div class="scrollTable">
+					<table class="table table-hover dataTable" id="myTable">
+						<thead>
+							<tr>
+								<th scope="col">User ID</th>
+								<th scope="col">User Name</th>
+								<th scope="col">User Type</th>
+								<th scope="col">Speciality</th>
+								<th scope="col">Contract Type</th>
+								<th scope="col">Start Date</th>
+								<th scope="col"> </th>
+							</tr>
+						</thead>
+						<tbody>
+						<!-- Get user details from database -->
+						<!-- <?php
+						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+						{
+						    $userType = "";
+						    $idStart = substr($row['user_id'], 0, 1); // get 1st character of ID
+						    if ($idStart == "S") $userType = "Specialist";
+						    else
+						    {
+						        $userType = "Operator";
+						    }
+						    echo "<tr>";
+						    echo "<td class='uid'>" . $row['user_id'] . "</td>";
+						    echo "<td>" . $row['fname'] . "</td>";
+						    echo "<td>" . $userType . "</td>";
+						    echo "<td>" . $row['specialty'] . "</td>";
+						    echo "<td>" . $row['contract_type'] . "</td>";
+						    echo "<td>" . $row['start_date'] . "</td>";
+						    echo '<td><a data-toggle="modal"><button id="btn_manageUser" onclick="expandUser();getUserDetails(this)"
+															 class="btn btn-secondary btn-sm">Manage</button></a></td>';
+						    echo "</tr>";
+						}
+						?> -->
+
+						</tbody>
+					</table>
+				</div>
+				<!-- Modals for user here -->
+			</div>
+		</div>
+	</div>
+
+	<p id="demo"></p>
+
+	<!-- Add new user modal -->
+	<div id="addNewUserModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<!-- <iframe name="dummy" style="display:none;"></iframe> -->
+				<form method="post" onsubmit="addNewUser()">
+					<span class="close">&times;</span>
+					
+					<!-- Modal header -->
+					<div class="modal-header">
+						<h2>User ID - Username</h2>
+					</div>
+					
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div class="row">
+							<div class="offset-3 col-4">
+								<!-- User ID -->
+
+								<label for="userID">User ID:</label><br>
+								<input type="text" id="user_id" name="user_id" placeholder="User ID" required><br>
+
+								<!-- User Name -->
+								<label for="fname">First Name:</label><br>
+								<input type="text" id="fname" name="fname" placeholder="First Name" required><br>
+
+								<label for="lname">Last Name:</label><br>
+								<input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="offset-3 col-4 triple-flex">
+								<!-- Operator type -->
+								<div>
+									<label for="operatorType">User type:</label>
+									<select name="operatorType" id="operatorType" required class="modal-third">
+										<option value="Operator">Operator</option>
+										<option value="Specialist">Specialist</option>
+									</select>								
+								</div>
+								
+								<!-- Specialist type -->
+								<div class="middle-select">
+									<label for="speciality_type">Speciality:</label>
+									<select name="speciality_type" id="speciality_type" required class="modal-third">
+										<option value="General">General</option>
+										<option value="Software">Software</option>
+										<option value="Hardware">Hardware</option>
+										<option value="Network">Network</option>
+									</select>							
+								</div>
+							
+								<!-- Contract type -->
+								<div>
+									<label for="contract_type">Contract type:</label>
+									<select name="contract_type" id="contract_type" required class="modal-third">
+										<option value="Permanent">Permanent</option>
+										<option value="Temporary">Temporary</option>
+									</select>
+									<br>							
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<!-- Stert and End Dates -->
+							<div class="offset-3 col-4 triple-flex">
+								<div>
+									<label for='start_date'>Start Date:</label>
+									<input type='text' name='start_date' id='start_date' placeholder="YYYY-MM-DD"><br>
+									<label for='end_date'>End Date:</label>
+									<input type='text' name='end_date' id='end_date' placeholder="YYYY-MM-DD"><br>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col offset-70">
+								<!-- change to submit ? So form can be sent? -->
+								<input type='submit' name='addUser'/>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<!-- Expand user details modal -->
+		<div id="expandManageUserModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<form>
+					<span class="close">&times;</span>
+					
+					<!-- Modal header -->
+					<div class="modal-header">
+						<h2>User ID - Username</h2>
+					</div>
+					
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div class="row">
+							<div class="offset-3 col-4">
+							<p id="userDetails"></p>
+							
+
+							</div>
+						</div>
+					</div>
+				</form>
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<div class="row">
+						<!-- Remove User -->
+						<div class="col offset-70">
+							<button id="btn-edit-user" >Edit details</button>	
+							<button id="btn-remove-user" class="btn-space1.5" onclick="removeUser()">Remove user</button>	
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- edit user modal -->
+		<div id="editUserDetailsModal" class="edit_modal">
+			<div class="modal-content">
+				<form method="post" onsubmit="editUserDetails()">
+					<span class="close">&times;</span>
+					
+					<!-- Modal header -->
+					<div class="modal-header">
+						<h2>EDIT USER</h2>
+					</div>
+					
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div class="row">
+							<div class="offset-3 col-4">								
+								<!-- First Name -->
+								<label for="username">First Name:</label><br>
+								<input type="text" id="fname_edit" name="fname_edit" placeholder="First Name"><br>
+
+								<!-- Last Name -->
+								<label for="username">Last Name:</label><br>
+								<input type="text" id="lname_edit" name="lname_edit" placeholder="Last Name"><br>
+								
+								<!-- User type -->
+								<label for="operatorType">User type:</label>
+								<select name="operatorType" id="operator_edit" class="modal-third">
+									<option value="Operator">Operator</option>
+									<option value="Specialist">Specialist</option>
+								</select>
+								
+								<!-- Specialist type -->
+								<label for="specialityType">Speciality:</label>
+								<select name="specialityType" id="speciality_edit" class="modal-third">
+									<option value="none">N/A</option>
+									<option value="Software">Software</option>
+									<option value="Hardware">Hardware</option>
+									<option value="Network">Network</option>
+								</select>		
+								
+								<!-- Contract type -->
+								<label for="contractType">Contract type:</label>
+								<select name="contractType" id="contract_edit" class="modal-third">
+									<option value="Permanent">Permanent</option>
+									<option value="Temporary">Temporary</option>
+								</select>		
+
+								<label for="startdate">Start Date:</label><br>
+								<input type="text" id="start_edit" name="start_edit" placeholder="YYYY-MM-DD"><br>
+
+								<label for="end_date">End Date:</label><br>
+								<input type="text" id="end_edit" name="end_edit" placeholder="YYYY-MM-DD"><br>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col offset-70">
+								<!-- change to submit ? -->
+								<input type='submit' id="btn-confirm-user-changes" name='editUser'/>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<!-- Modal scripts -->
+		
+</body>
+
+</html>

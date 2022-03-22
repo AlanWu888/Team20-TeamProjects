@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- notes:
+			> unopened
+			> seen
+			> solution offered / pending
+			> resolved
+		-->
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<!-- Bootstrap icons -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+
+		<link rel="stylesheet" href="css/specialist.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+		<title>Make-It-All</title>
+	</head>
+	<body>	
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<!-- Logo -->
+			<a class="navbar-brand" href="#">
+				<img src="../assets/nav_logo.png" width="40" height="40" class="mr-2">
+				<b>Make-It-All</b>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<!-- navbar search -->
+				<form class="form-inline my-2 my-lg-0 nav-item mx-auto">
+					<select class="form-control my-2 my-lg-0" id="myFilter" onclick="myFunction()">
+						<option value="0">Case ID</option>
+						<option value="1">Caller Name</option>
+						<option value="2">Case Status</option>
+						<option value="3">Date</option>
+					</select>
+					<input class="form-control ml-sm-2" type="search" placeholder="Search" aria-label="Search" id="myInput" onkeyup="myFunction()">
+				</form>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Log out</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="offset-sm-1 col-sm-10 mt-2">
+					<b>Welcome back, {SPECIALIST NAME}</b>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="offset-md-1 col-md-10 offset-sm-1 col-sm-10 mt-5">
+					<div class ="scrollTable scroll">
+					   <table class="table table-hover dataTable" id="myTable">
+						  <thead>
+							 <tr>
+								<th scope="col">Case ID</th>
+								<th scope="col">Caller Name</th>
+								<!-- <th scope="col">Software Type</th>
+								   <th scope="col">Hardware Type</th> -->
+								<th scope="col">Case Status</th>
+								<th scope="col">Date Opened</th>
+								<th scope="col"> </th>
+							 </tr>
+						  </thead>
+						  <tbody>
+							 
+							 <tr id="larry">
+								<td>19</td>
+								<td>Larry</td>
+								<td id="status">Open</td>
+								<td>10/11/2021</td>
+								<td><a data-toggle="modal" data-target="#problemModal"><i class="bi-arrows-fullscreen expandProblemStyle"></i></a></td>
+							 </tr>
+							 <tr>
+								<td>10</td>
+								<td>Larry</td>
+								<td>Open</td>
+								<td>22/03/2021</td>
+								<td><i class="bi-arrows-fullscreen expandProblemStyle"></i></td>
+							 <tr>
+								<td>5</td>
+								<td>Jacob</td>
+								<td>Open</td>
+								<td>08/03/2021</td>
+								<td><i class="bi-arrows-fullscreen expandProblemStyle"></i></td>
+							 </tr>
+							 <tr>
+								<td>4</td>
+								<td>Larry</td>
+								<td>Open</td>
+								<td>07/03/2021</td>
+								<td><i class="bi-arrows-fullscreen expandProblemStyle"></i></td>
+							 </tr>
+							 <tr>
+								<td>3</td>
+								<td>Mark</td>
+								<td>Open</td>
+								<td>06/03/2021</td>
+								<td><i class="bi-arrows-fullscreen expandProblemStyle"></i></td>
+							 </tr>
+							 <tr>
+								<td>1</td>
+								<td>Larry</td>
+								<td>Open</td>
+								<td>04/03/2021</td>
+								<td><i class="bi-arrows-fullscreen expandProblemStyle"></i></td>
+							 </tr>
+						  </tbody>
+					   </table>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Modal For Problem Info -->
+            <div class="modal fade problemInfo" id="problemModal" tabindex="-1" role="dialog" aria-labelledby="problemModal" aria-hidden="true">
+               <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Case 19</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-body">
+                        <ul>
+                           <li><b>Caller Name:</b> Larry</li>
+                           <li><b>Case Status:</b> Open</li>
+                           <li><b>Software type:</b> MacOS</li>
+                           <li><b>Hardware type:</b> MacBook</li>
+                           <li><b>Problem description:</b> Microsoft Word keeps crashing</li>
+                           <li><b>Date Opened:</b>30/03/2021</li>
+                        </ul>
+                        <hr>
+                        <h5>Notes</h5>
+                        <br>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNoteInput" aria-expanded="false" aria-controls="collapseFilters">
+                        + Add Notes
+                        </button>
+                        <div class="collapse" id="collapseNoteInput">
+                           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="deleterow()" data-dismiss="modal">Resolve</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>
